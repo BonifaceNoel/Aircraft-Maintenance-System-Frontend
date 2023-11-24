@@ -7,6 +7,7 @@ import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import LinearProgress from '@mui/material/LinearProgress';
 
 const UpdateMaintenanceForm = ({ data, onClose, open }) => {
     const [updateData, setUpdateData] = useState({});
@@ -94,30 +95,36 @@ const UpdateMaintenanceForm = ({ data, onClose, open }) => {
                     fullWidth
                 />
 
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DemoContainer components={['DatePicker']}>
-                        <DatePicker
-                            label="Arrival Date"
-                            format="YYYY/MM/DD"
-                            value={updateData.arrival_date}
-                            onChange={handleArrivalChange}
-                            renderInput={(params) => <TextField {...params} />}
-                        />
-                    </DemoContainer>
-                </LocalizationProvider>
+                <TextField
+                    label="Arrival Date"
+                    type="date"  // Use 'date' type for date input
+                    value={updateData.arrival_date}
+                    onChange={handleArrivalChange}
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                    sx={{ marginTop: 1, marginRight: '2rem' }}
+                />
 
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DemoContainer components={['DatePicker']}>
-                        <DatePicker
-                            label="Completion Date"
-                            format="YYYY/MM/DD"
-                            value={updateData.completion_date}
-                            onChange={handleCompletionChange}
-                            renderInput={(params) => <TextField {...params} />}
-                        />
-                    </DemoContainer>
-                </LocalizationProvider>
-
+                <TextField
+                    label="Completion Date"
+                    type="date"
+                    value={updateData.completion_date}
+                    onChange={handleCompletionChange}
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                    sx={{ marginTop: 1 }}
+                />
+                <TextField
+                    label="Maintenance Progress"
+                    name="maintenance_progress"
+                    margin="dense"
+                    style={{ marginTop: 12 }}
+                    value={updateData.maintenance_status}
+                    onChange={handleChange}
+                    fullWidth
+                />
                 <Select
                     name="maintenance_status"
                     sx={{ marginTop: 1 }}
@@ -133,6 +140,7 @@ const UpdateMaintenanceForm = ({ data, onClose, open }) => {
                     <MenuItem value="In Progress">In Progress</MenuItem>
                     <MenuItem value="Completed">Completed</MenuItem>
                 </Select>
+
                 <TextField
                     label="Maintenance Progress"
                     name="maintenance_progress"
@@ -140,9 +148,11 @@ const UpdateMaintenanceForm = ({ data, onClose, open }) => {
                     style={{ marginTop: 12 }}
                     value={updateData.maintenance_progress}
                     onChange={handleChange}
-                    fullWidth
+                    ful
+                    lWidth
                 />
-                </DialogContent>
+                <LinearProgress variant="determinate" color="primary" value={updateData.maintenance_progress} />
+            </DialogContent>
             <DialogActions>
                 <Button onClick={onClose} color="primary">
                     Cancel
