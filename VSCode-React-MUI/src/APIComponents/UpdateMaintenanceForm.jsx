@@ -120,7 +120,6 @@ const UpdateMaintenanceForm = ({ data, onClose, open }) => {
                     label="Maintenance Progress"
                     name="maintenance_progress"
                     margin="dense"
-                    style={{ marginTop: 12 }}
                     value={updateData.maintenance_status}
                     onChange={handleChange}
                     fullWidth
@@ -145,7 +144,6 @@ const UpdateMaintenanceForm = ({ data, onClose, open }) => {
                     label="Maintenance Progress"
                     name="maintenance_progress"
                     margin="dense"
-                    style={{ marginTop: 12 }}
                     value={updateData.maintenance_progress}
                     onChange={handleChange}
                     ful
