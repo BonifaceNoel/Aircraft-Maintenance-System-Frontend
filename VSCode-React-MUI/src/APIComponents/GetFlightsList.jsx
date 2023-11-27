@@ -47,7 +47,7 @@ const GetFlightsList = () => {
     return (
         <div>
             <Typography variant='h4' style={{ marginTop: '70px', marginRight: '10px' }}>Get Flight Details</Typography>
-            <TableContainer component={Paper} style={{ width: '165%', overflowX: 'auto' }}>
+            <TableContainer component={Paper} style={{ width: '145%', overflowX: 'auto' }}>
                 <Table>
                     <TableHead>
                         <TableRow>

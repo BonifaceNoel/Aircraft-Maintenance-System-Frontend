@@ -100,11 +100,11 @@ const GetMaintenanceDetails = () => {
             </TableContainer>
 
             {updatePopupOpen &&
-            <UpdateMaintenanceForm
-                data={selectedData}
-                onClose={handleUpdatePopupClose}
-                open={updatePopupOpen}
-            />}
+                <UpdateMaintenanceForm
+                    data={selectedData}
+                    onClose={handleUpdatePopupClose}
+                    open={updatePopupOpen}
+                />}
         </div>
     );
 };

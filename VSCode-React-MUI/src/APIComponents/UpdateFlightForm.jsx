@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { TextField, Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
+import { TextField, Button, Dialog, DialogActions, DialogContent, DialogTitle, InputLabel } from '@mui/material';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { Typography } from '@mui/material';
@@ -41,7 +41,6 @@ const UpdateFlightForm = ({ data, onClose, open }) => {
         <Dialog open={open} onClose={onClose}>
             <DialogTitle>Update Maintenance Details</DialogTitle>
             <DialogContent>
-                {console.log(updateData)}
                 <TextField
                     label="Flight ID"
                     name="flight_id"
@@ -90,22 +89,23 @@ const UpdateFlightForm = ({ data, onClose, open }) => {
                     onChange={handleChange}
                     fullWidth
                 />
-
-                <TextField
-                    label="Flight Status"
-                    name="flight_status"
-                    margin="dense"
-                    value={updateData.flight_status}
-                    onChange={handleChange}
-                    fullWidth
-                />
+                <InputLabel
+                    htmlFor="flight-status-select"
+                    style={{ marginBottom: '-10px', fontSize: '0.8rem', marginLeft: '1rem' }}
+                >Flight Status
+                </InputLabel>
                 <Select
+                    label="Flight Status"
                     name="flight_status"
                     sx={{ marginTop: 1 }}
                     value={updateData.flight_status || ''}
                     onChange={handleChange}
                     fullWidth
                     displayEmpty
+                    inputProps={{
+                        name: 'flight_status',
+                        id: 'flight-status-select',
+                    }}
                 >
                     <MenuItem value="" disabled>
                         <Typography sx={{ color: 'grey' }}>Select Flight Status</Typography>

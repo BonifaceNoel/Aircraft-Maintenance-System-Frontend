@@ -112,15 +112,11 @@ const UpdateMaintenanceForm = ({ data, onClose, open }) => {
                     }}
                     sx={{ marginTop: 1 }}
                 />
-                <TextField
-                    label="Maintenance Status"
-                    name="maintenance_status"
-                    margin="dense"
-                    value={updateData.maintenance_status}
-                    onChange={handleChange}
-                    fullWidth
-                />
-                <InputLabel htmlFor="flight-status-select">Flight Status</InputLabel>
+                <InputLabel
+                    htmlFor="maintenance-status-select"
+                    style={{marginBottom: '-10px', fontSize: '0.8rem', marginLeft: '1rem'}}
+                >Maintenance Status
+                </InputLabel>
                 <Select
                     label="Maintenance Status"
                     name="maintenance_status"
@@ -130,11 +126,11 @@ const UpdateMaintenanceForm = ({ data, onClose, open }) => {
                     fullWidth
                     displayEmpty
                     inputProps={{
-                        name: 'flight_status',
-                        id: 'flight-status-select',
+                        name: 'maintenance_status',
+                        id: 'maintenance-status-select',
                     }}
                 >
-                    <MenuItem value="" disabled>
+                    <MenuItem value="">
                         <Typography sx={{ color: 'grey' }}>Select Maintenance Status</Typography>
                     </MenuItem>
                     <MenuItem value="Pending">Pending</MenuItem>
@@ -148,8 +144,8 @@ const UpdateMaintenanceForm = ({ data, onClose, open }) => {
                     margin="dense"
                     value={updateData.maintenance_progress || ''}
                     onChange={handleChange}
-                    ful
-                    lWidth
+                    fullWidth
+                    disabled={updateData.maintenance_status === 'Pending' || updateData.maintenance_status === 'Completed'}
                 />
                 <LinearProgress variant="determinate" color="primary" value={updateData.maintenance_progress} />
             </DialogContent>
