@@ -48,6 +48,7 @@ const UpdateFlightForm = ({ data, onClose, open }) => {
                     value={updateData.aircraft_id}
                     onChange={handleChange}
                     fullWidth
+                    disabled
                 />
                 <TextField
                     label="Chassis No"

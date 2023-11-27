@@ -65,6 +65,7 @@ const UpdateMaintenanceForm = ({ data, onClose, open }) => {
                     value={updateData.maintenance_id}
                     onChange={handleChange}
                     fullWidth
+                    disabled
                 />
                 <TextField
                     label="Flight ID"
@@ -73,6 +74,7 @@ const UpdateMaintenanceForm = ({ data, onClose, open }) => {
                     value={updateData.flight_id}
                     onChange={handleChange}
                     fullWidth
+                    disabled
                 />
                 <TextField
                     label="Maintenance Type"
