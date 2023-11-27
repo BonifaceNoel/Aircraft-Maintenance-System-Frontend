@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { TextField, Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
+import { TextField, Button, Dialog, DialogActions, DialogContent, DialogTitle, InputLabel } from '@mui/material';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { Typography } from '@mui/material';
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import LinearProgress from '@mui/material/LinearProgress';
 
 const UpdateMaintenanceForm = ({ data, onClose, open }) => {
@@ -50,6 +46,7 @@ const UpdateMaintenanceForm = ({ data, onClose, open }) => {
                 if (response.ok) {
                     // If update is successful, trigger the onUpdate callback
                     onClose();
+                    window.location.reload();
                 } else {
                     console.error('Error updating record:', response.statusText);
                 }
@@ -123,13 +120,19 @@ const UpdateMaintenanceForm = ({ data, onClose, open }) => {
                     onChange={handleChange}
                     fullWidth
                 />
+                <InputLabel htmlFor="flight-status-select">Flight Status</InputLabel>
                 <Select
+                    label="Maintenance Status"
                     name="maintenance_status"
                     sx={{ marginTop: 1 }}
-                    value={updateData.maintenance_status}
+                    value={updateData.maintenance_status || ''}
                     onChange={handleChange}
                     fullWidth
                     displayEmpty
+                    inputProps={{
+                        name: 'flight_status',
+                        id: 'flight-status-select',
+                    }}
                 >
                     <MenuItem value="" disabled>
                         <Typography sx={{ color: 'grey' }}>Select Maintenance Status</Typography>
@@ -143,7 +146,7 @@ const UpdateMaintenanceForm = ({ data, onClose, open }) => {
                     label="Maintenance Progress"
                     name="maintenance_progress"
                     margin="dense"
-                    value={updateData.maintenance_progress}
+                    value={updateData.maintenance_progress || ''}
                     onChange={handleChange}
                     ful
                     lWidth

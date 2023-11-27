@@ -3,11 +3,6 @@ import { TextField, Button, Dialog, DialogActions, DialogContent, DialogTitle } 
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { Typography } from '@mui/material';
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import LinearProgress from '@mui/material/LinearProgress';
 
 const UpdateFlightForm = ({ data, onClose, open }) => {
     const [updateData, setUpdateData] = useState({});
@@ -21,25 +16,9 @@ const UpdateFlightForm = ({ data, onClose, open }) => {
         setUpdateData((prevData) => ({ ...prevData, [name]: value }));
     };
 
-    const handleArrivalChange = (date) => {
-        // Update the arrival_date property in formData
-        setUpdateData({
-            ...updateData,
-            arrival_date: date,
-        });
-    };
-
-    const handleCompletionChange = (date) => {
-        // Update the completion_date property in formData
-        setUpdateData({
-            ...updateData,
-            completion_date: date,
-        });
-    };
-
     const handleUpdate = () => {
         // Make a PUT request to update the maintenance details
-        fetch(``, {
+        fetch(`http://localhost:8090/apihome/updateflight/${updateData.aircraft_id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -50,6 +29,7 @@ const UpdateFlightForm = ({ data, onClose, open }) => {
                 if (response.ok) {
                     // If update is successful, trigger the onUpdate callback
                     onClose();
+                    window.location.reload();
                 } else {
                     console.error('Error updating record:', response.statusText);
                 }
@@ -70,7 +50,7 @@ const UpdateFlightForm = ({ data, onClose, open }) => {
                     onChange={handleChange}
                     fullWidth
                 />
-                {/* <TextField
+                <TextField
                     label="Chassis No"
                     name="reg_num"
                     margin="dense"
@@ -122,7 +102,7 @@ const UpdateFlightForm = ({ data, onClose, open }) => {
                 <Select
                     name="flight_status"
                     sx={{ marginTop: 1 }}
-                    value={updateData.flight_status}
+                    value={updateData.flight_status || ''}
                     onChange={handleChange}
                     fullWidth
                     displayEmpty
@@ -133,7 +113,7 @@ const UpdateFlightForm = ({ data, onClose, open }) => {
                     <MenuItem value="On Time">On Time</MenuItem>
                     <MenuItem value="Delayed">Delayed</MenuItem>
                     <MenuItem value="Cancelled">Cancelled</MenuItem>
-                </Select>*/}
+                </Select>
             </DialogContent>
             <DialogActions>
                 <Button onClick={onClose} color="primary">
