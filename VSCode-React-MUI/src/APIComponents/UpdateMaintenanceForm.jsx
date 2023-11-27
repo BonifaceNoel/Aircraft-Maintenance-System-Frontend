@@ -61,7 +61,6 @@ const UpdateMaintenanceForm = ({ data, onClose, open }) => {
         <Dialog open={open} onClose={onClose}>
             <DialogTitle>Update Maintenance Details</DialogTitle>
             <DialogContent>
-                {console.log(data)}
                 <TextField
                     label="Maintenance ID"
                     name="maintenance_id"
@@ -117,8 +116,8 @@ const UpdateMaintenanceForm = ({ data, onClose, open }) => {
                     sx={{ marginTop: 1 }}
                 />
                 <TextField
-                    label="Maintenance Progress"
-                    name="maintenance_progress"
+                    label="Maintenance Status"
+                    name="maintenance_status"
                     margin="dense"
                     value={updateData.maintenance_status}
                     onChange={handleChange}

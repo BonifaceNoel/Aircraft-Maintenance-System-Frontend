@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, Button } from '@mui/material';
+import UpdateFlightForm from './UpdateFlightForm';
 
 const GetFlightsList = () => {
     const [data, setData] = useState([]);
+
+    const [updatePopupOpen, setUpdatePopupOpen] = useState(false);
+    const [selectedData, setSelectedData] = useState({});
 
     useEffect(() => {
         // Fetch data from the backend API
@@ -11,6 +15,17 @@ const GetFlightsList = () => {
             .then((data) => setData(data))
             .catch((error) => console.error('Error fetching data:', error));
     }, []); // Empty dependency array means this effect runs once after the component mounts
+
+    const handleUpdateClick = (data) => {
+        // Set the maintenanceId to update and open the popup
+        setSelectedData(data)
+        setUpdatePopupOpen(true);
+    };
+
+    const handleUpdatePopupClose = () => {
+        // Close the popup
+        setUpdatePopupOpen(false);
+    };
 
     const handleDelete = (aircraftId) => {
         // Make a DELETE request to delete the record
@@ -63,8 +78,16 @@ const GetFlightsList = () => {
                                         variant="outlined"
                                         color="secondary"
                                         onClick={() => handleDelete(row.aircraft_id)}
+                                        style={{marginRight: '8px'}}
                                     >
                                         Delete
+                                    </Button>
+                                    <Button
+                                        variant="outlined"
+                                        color="primary"
+                                        onClick={() => handleUpdateClick(row)}
+                                    >
+                                        Update
                                     </Button>
                                 </TableCell>
                             </TableRow>
@@ -72,6 +95,13 @@ const GetFlightsList = () => {
                     </TableBody>
                 </Table>
             </TableContainer>
+
+            {updatePopupOpen &&
+                <UpdateFlightForm
+                    data={selectedData}
+                    onClose={handleUpdatePopupClose}
+                    open={updatePopupOpen}
+                />}
         </div>
     );
 };
