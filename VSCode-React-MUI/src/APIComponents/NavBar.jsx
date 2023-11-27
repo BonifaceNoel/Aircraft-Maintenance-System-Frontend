@@ -145,7 +145,7 @@ const NavBar = () => {
                         open={Boolean(anchorEl)}
                         onClose={handleClose}
                     >
-                        <MenuItem component={Link} to="/home" onClick={handleClose}>Home</MenuItem>
+                        <MenuItem component={Link} to="/" onClick={handleClose}>Home</MenuItem>
                         <MenuItem component={Link} to="/getflights" onClick={handleClose}>Get Flights List</MenuItem>
                         <MenuItem component={Link} to="/getmaintenance" onClick={handleClose}>Get Maintenance List</MenuItem>
                         <MenuItem component={Link} to="/flightsdamaged" onClick={handleClose}>Flights Damaged</MenuItem>
