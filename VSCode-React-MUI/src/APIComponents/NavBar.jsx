@@ -152,7 +152,6 @@ const NavBar = () => {
                         <MenuItem component={Link} to="/flightstatus" onClick={handleClose}>Flights Status</MenuItem>
                         <MenuItem component={Link} to="/newflight" onClick={handleClose}>New Registry</MenuItem>
                         <MenuItem component={Link} to="/searchbyid" onClick={handleClose}>Search By ID</MenuItem>
-                        <MenuItem onClick={handleClose}>About</MenuItem>
                     </Menu>
                 </Toolbar>
             </DarkNavbar>
