@@ -145,14 +145,13 @@ const NavBar = () => {
                         open={Boolean(anchorEl)}
                         onClose={handleClose}
                     >
-                        <MenuItem component={Link} to="/home" onClick={handleClose}>Home</MenuItem>
+                        <MenuItem component={Link} to="/" onClick={handleClose}>Home</MenuItem>
                         <MenuItem component={Link} to="/getflights" onClick={handleClose}>Get Flights List</MenuItem>
                         <MenuItem component={Link} to="/getmaintenance" onClick={handleClose}>Get Maintenance List</MenuItem>
                         <MenuItem component={Link} to="/flightsdamaged" onClick={handleClose}>Flights Damaged</MenuItem>
                         <MenuItem component={Link} to="/flightstatus" onClick={handleClose}>Flights Status</MenuItem>
                         <MenuItem component={Link} to="/newflight" onClick={handleClose}>New Registry</MenuItem>
                         <MenuItem component={Link} to="/searchbyid" onClick={handleClose}>Search By ID</MenuItem>
-                        <MenuItem onClick={handleClose}>About</MenuItem>
                     </Menu>
                 </Toolbar>
             </DarkNavbar>

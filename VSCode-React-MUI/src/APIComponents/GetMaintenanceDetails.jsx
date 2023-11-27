@@ -1,9 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, Button } from '@mui/material';
 import LinearProgress from '@mui/material/LinearProgress';
+import UpdateMaintenanceForm from './UpdateMaintenanceForm';
 
 const GetMaintenanceDetails = () => {
     const [data, setData] = useState([]);
+
+    const [updatePopupOpen, setUpdatePopupOpen] = useState(false);
+    const [selectedData, setSelectedData] = useState({});
+
+    const handleUpdateClick = (data) => {
+        // Set the maintenanceId to update and open the popup
+        setSelectedData(data)
+        setUpdatePopupOpen(true);
+    };
+
+    const handleUpdatePopupClose = () => {
+        // Close the popup
+        setUpdatePopupOpen(false);
+    };
 
     useEffect(() => {
         // Fetch data from the backend API
@@ -21,7 +36,7 @@ const GetMaintenanceDetails = () => {
             .then((response) => {
                 if (response.ok) {
                     // If deletion is successful, update the state to remove the deleted record
-                    setData((prevData) => prevData.filter((row) => row.maintenance_id_id !== maintenanceId));
+                    setData((prevData) => prevData.filter((row) => row.maintenance_id !== maintenanceId));
                     window.location.reload();
                 } else {
                     console.error('Error deleting record:', response.statusText);
@@ -33,7 +48,7 @@ const GetMaintenanceDetails = () => {
     return (
         <div>
             <Typography variant='h4' style={{ marginTop: '70px', marginRight: '10px' }}>Get Maintenance Details</Typography>
-            <TableContainer component={Paper} style={{ width: '115%', overflowX: 'auto' }}>
+            <TableContainer component={Paper} style={{ width: '105%', overflowX: 'auto' }}>
                 <Table>
                     <TableHead>
                         <TableRow>
@@ -66,8 +81,16 @@ const GetMaintenanceDetails = () => {
                                         variant="outlined"
                                         color="secondary"
                                         onClick={() => handleDelete(row.maintenance_id)}
+                                        style={{ marginRight: '8px' }}
                                     >
                                         Delete
+                                    </Button>
+                                    <Button
+                                        variant="outlined"
+                                        color="primary"
+                                        onClick={() => handleUpdateClick(row)}
+                                    >
+                                        Update
                                     </Button>
                                 </TableCell>
                             </TableRow>
@@ -75,6 +98,13 @@ const GetMaintenanceDetails = () => {
                     </TableBody>
                 </Table>
             </TableContainer>
+
+            {updatePopupOpen &&
+                <UpdateMaintenanceForm
+                    data={selectedData}
+                    onClose={handleUpdatePopupClose}
+                    open={updatePopupOpen}
+                />}
         </div>
     );
 };
