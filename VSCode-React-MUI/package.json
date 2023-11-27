@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "start vite": "concurrently \"npm run dev\" \"npm run open:browser\"",
+    "start-vite": "concurrently \"npm run dev\" \"npm run open:browser\"",
     "open:browser": "start http://localhost:5173",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
