@@ -3,7 +3,6 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 
-
 const FlightStatus = () => {
     const [data, setData] = useState([]);
 
@@ -17,7 +16,7 @@ const FlightStatus = () => {
             .then((response) => response.json())
             .then((data) => setData(data))
             .catch((error) => console.error('Error fetching data:', error));
-}
+    }
 
     return (
         <div>

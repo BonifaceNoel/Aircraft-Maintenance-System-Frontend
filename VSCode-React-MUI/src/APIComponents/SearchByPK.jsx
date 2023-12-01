@@ -3,6 +3,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import FlightSearch from './FlightSearch';
 import MaintenanceSearch from './MaintenanceSearch';
+import backgroundImg from '../../public/flight-1.jpg';
 
 const SearchByPK = () => {
     const [flightSearch, setFlightSearch] = useState(false);
@@ -35,22 +36,30 @@ const SearchByPK = () => {
     };
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '1rem', position: 'relative' }}>
-
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <img
+                src={backgroundImg}
+                alt="Description of the image"
+                style={{ width: '100%', height: '45rem', marginTop: '-12.5rem' }}
+            />
             {/* Text field for entering Aircraft ID */}
             <TextField
                 label="Aircraft ID"
                 variant="outlined"
+                color='secondary'
                 value={aircraftId}
                 onChange={handleAircraftIdChange}
-                style={{ margin: '0.5rem 0', width: '20rem' }}
+                style={{ marginTop: '-30.5rem', marginLeft: '0.5rem', width: '20rem' }}
+                InputProps={{ 
+                    style: { color: 'white', backgroundColor: 'white' }
+                }}
             />
 
             {/* Search by Aircraft ID */}
             <Button
                 variant="contained"
                 onClick={flightOpen}
-                style={{ margin: '1rem 0' }}
+                style={{ margin: '1rem 0', marginLeft: '0.5rem', width: '20rem' }}
             >
                 Search by Aircraft ID
             </Button>
@@ -59,16 +68,20 @@ const SearchByPK = () => {
             <TextField
                 label="Maintenance ID"
                 variant="outlined"
+                color='secondary'
                 value={maintenanceId}
                 onChange={handleMaintenanceIdChange}
-                style={{ margin: '0.5rem 0', width: '20rem' }}
+                style={{ margin: '0.5rem 0', marginLeft: '0.5rem', width: '20rem' }}
+                InputProps={{
+                    style: { color: 'white', backgroundColor: 'white' }
+                }}
             />
 
             {/* Search by Maintenance ID */}
             <Button
                 variant="contained"
                 onClick={maintenanceOpen}
-                style={{ margin: '1rem 0' }}
+                style={{ margin: '1rem 0', marginLeft: '0.5rem', width: '20rem' }}
             >
                 Search by Maintenance ID
             </Button>
