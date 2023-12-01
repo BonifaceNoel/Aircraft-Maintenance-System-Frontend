@@ -21,7 +21,7 @@ const FlightStatus = () => {
 
     return (
         <div>
-            <Typography variant='h4' style={{ marginTop: '-220px', marginRight: '10px' }}>Total Flights Under Maintenance</Typography>
+            <Typography variant='h4' style={{ marginRight: '10px' }}>Total Flights Under Maintenance</Typography>
             <Typography variant style={{ width: 'auto', fontWeight: 'bolder' }}>Status of Completion:  </Typography>
             <Select value={selectedValue} onChange={handleDropdownChange}>
                 <MenuItem value="Completed">Completed</MenuItem>
