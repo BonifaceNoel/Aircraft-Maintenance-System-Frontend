@@ -79,7 +79,6 @@ const NavBar = () => {
 
     const handleSearchSubmit = (event) => {
         event.preventDefault();
-        // Close the search menu if it's open
         handleClose();
 
         // Define a mapping between search queries and their corresponding routes
@@ -137,7 +136,10 @@ const NavBar = () => {
                             placeholder="Search…"
                             inputProps={{ 'aria-label': 'search' }}
                             value={searchQuery}
-                            onChange={handleSearchSubmit}
+                            onChange={handleSearchChange}
+                        />
+                        <SearchIcon 
+                            onClick={handleSearchSubmit}
                         />
                     </Search>
                     <Menu
