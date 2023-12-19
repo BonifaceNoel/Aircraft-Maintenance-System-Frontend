@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -11,6 +11,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
+import { createBrowserHistory } from 'history';
 
 const DarkNavbar = styled(AppBar)(({ theme }) => ({
     backgroundColor: 'rebeccapurple', // Dark background color
@@ -65,6 +66,8 @@ const NavBar = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [searchQuery, setSearchQuery] = React.useState('');
 
+    const navigate = useNavigate();
+
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -77,29 +80,35 @@ const NavBar = () => {
         setSearchQuery(event.target.value);
     };
 
+    const handleKeyDown = (event) => {
+        console.log(event.key)
+
+        if (event.key === 'Enter') {
+            handleSearchSubmit();
+        }
+
+    }
     const handleSearchSubmit = (event) => {
-        event.preventDefault();
         handleClose();
 
         // Define a mapping between search queries and their corresponding routes
         const searchQueryRoutes = {
-            "Home": "/home",
-            "Get Flights List": "/getflights",
-            "Get Maintenance List": "/getmaintenance",
-            "Flights Damaged": "/flightsdamaged",
-            "Flights Status": "/flightstatus",
-            "New Registry": "/newflight",
-            "Search By ID": "/searchbyid",
-            "About": "/about",
-            // Add more mappings as needed
+            "home": "/",
+            "get flights list": "/getflights",
+            "get maintenance list": "/getmaintenance",
+            "flights damaged": "/flightsdamaged",
+            "flights status": "/flightstatus",
+            "new registry": "/newflight",
+            "search By ID": "/searchbyid",
         };
-        console.log(searchQuery);
         // Check if the search query matches a menu item
         const matchedRoute = searchQueryRoutes[searchQuery];
 
         // If a match is found, navigate to the corresponding page
         if (matchedRoute) {
-            history.push(matchedRoute);
+            //let history = createBrowserHistory();
+            navigate(matchedRoute);
+            //window.location.reload();
         } else {
             // Handle the case when there's no match (optional)
             console.log("No matching menu item found for the search query");
@@ -137,9 +146,7 @@ const NavBar = () => {
                             inputProps={{ 'aria-label': 'search' }}
                             value={searchQuery}
                             onChange={handleSearchChange}
-                        />
-                        <SearchIcon 
-                            onClick={handleSearchSubmit}
+                            onKeyDown={handleKeyDown}
                         />
                     </Search>
                     <Menu
