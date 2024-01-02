@@ -14,6 +14,7 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import NavBar from './NavBar';
+import LoginNav from './LoginNav';
 
 const Copyright = (props) => {
     return (
@@ -59,6 +60,7 @@ const LoginPageSector = () => {
 
     return (
         <ThemeProvider theme={defaultTheme}>
+            <LoginNav />
             <Grid container component="main" sx={{ height: '100vh' }}>
                 <CssBaseline />
                 <Grid
