@@ -99,7 +99,7 @@ const NavBar = () => {
             "flights damaged": "/flightsdamaged",
             "flights status": "/flightstatus",
             "new registry": "/newflight",
-            "search By ID": "/searchbyid",
+            "search by id": "/searchbyid",
         };
         // Check if the search query matches a menu item
         const matchedRoute = searchQueryRoutes[searchQuery];

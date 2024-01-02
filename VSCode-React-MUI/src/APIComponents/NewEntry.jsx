@@ -3,6 +3,7 @@ import Button from '@mui/material/Button';
 import NewFlight from './NewFlight';
 import NewMaintenance from './NewMaintenance';
 import backgroundImg from '../../public/flight-2.jpg';
+import NavBar from './NavBar';
 
 const NewEntry = () => {
     const [flight, setFlight] = useState(false);
@@ -25,7 +26,8 @@ const NewEntry = () => {
     };
 
     return (
-        <div style={{}}>
+        <div >
+            <NavBar />
             <img
                 src={backgroundImg}
                 alt="Description of the image"

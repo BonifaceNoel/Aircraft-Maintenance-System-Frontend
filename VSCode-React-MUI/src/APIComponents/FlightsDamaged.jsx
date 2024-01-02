@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography } from '@mui/material';
 import LinearProgress from '@mui/material/LinearProgress';
+import NavBar from './NavBar';
 
 const FlightsDamaged = () => {
     const [data, setData] = useState([]);
@@ -15,6 +16,7 @@ const FlightsDamaged = () => {
 
     return (
         <div>
+            <NavBar />
             <Typography variant='h4' style={{ marginTop: '70px', marginRight: '10px' }}>Total Flights Under Maintenance</Typography>
             <TableContainer component={Paper} style={{ width: '155%', overflowX: 'auto' }}>
                 <Table>

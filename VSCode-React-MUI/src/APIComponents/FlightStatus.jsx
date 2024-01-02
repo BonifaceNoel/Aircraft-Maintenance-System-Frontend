@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography } from '@mui/material';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
+import NavBar from './NavBar';
 
 const FlightStatus = () => {
     const [data, setData] = useState([]);
@@ -20,6 +21,7 @@ const FlightStatus = () => {
 
     return (
         <div>
+            <NavBar />
             <Typography variant='h4' style={{ marginRight: '10px' }}>Total Flights Under Maintenance</Typography>
             <Typography variant style={{ width: 'auto', fontWeight: 'bolder' }}>Status of Completion:  </Typography>
             <Select value={selectedValue} onChange={handleDropdownChange}>

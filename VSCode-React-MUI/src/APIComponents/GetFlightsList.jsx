@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, Button } from '@mui/material';
 import UpdateFlightForm from './UpdateFlightForm';
+import NavBar from './NavBar';
 
 const GetFlightsList = () => {
     const [data, setData] = useState([]);
@@ -46,6 +47,7 @@ const GetFlightsList = () => {
 
     return (
         <div>
+            <NavBar />
             <Typography variant='h4' style={{ marginTop: '70px', marginRight: '10px' }}>Get Flight Details</Typography>
             <TableContainer component={Paper} style={{ width: '145%', overflowX: 'auto' }}>
                 <Table>

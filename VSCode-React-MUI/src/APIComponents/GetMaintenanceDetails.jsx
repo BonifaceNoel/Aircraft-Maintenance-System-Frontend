@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, Button } from '@mui/material';
 import LinearProgress from '@mui/material/LinearProgress';
 import UpdateMaintenanceForm from './UpdateMaintenanceForm';
+import NavBar from './NavBar';
 
 const GetMaintenanceDetails = () => {
     const [data, setData] = useState([]);
@@ -47,6 +48,7 @@ const GetMaintenanceDetails = () => {
 
     return (
         <div>
+            <NavBar />
             <Typography variant='h4' style={{ marginTop: '70px', marginRight: '10px' }}>Get Maintenance Details</Typography>
             <TableContainer component={Paper} style={{ width: '105%', overflowX: 'auto' }}>
                 <Table>

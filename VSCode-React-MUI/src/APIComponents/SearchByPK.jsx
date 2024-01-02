@@ -4,6 +4,7 @@ import TextField from '@mui/material/TextField';
 import FlightSearch from './FlightSearch';
 import MaintenanceSearch from './MaintenanceSearch';
 import backgroundImg from '../../public/flight-1.jpg';
+import NavBar from './NavBar';
 
 const SearchByPK = () => {
     const [flightSearch, setFlightSearch] = useState(false);
@@ -37,6 +38,7 @@ const SearchByPK = () => {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <NavBar />
             <img
                 src={backgroundImg}
                 alt="Description of the image"

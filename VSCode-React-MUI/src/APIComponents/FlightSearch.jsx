@@ -8,6 +8,7 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import NavBar from './NavBar';
 
 const FlightSearch = ({ open, onClose, aircraftId }) => {
     const [tableData, setTableData] = useState([]);

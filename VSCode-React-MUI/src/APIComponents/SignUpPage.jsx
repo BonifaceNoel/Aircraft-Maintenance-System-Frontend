@@ -15,6 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
+import NavBar from './NavBar';
 
 const Copyright = (props) => {
     return (
