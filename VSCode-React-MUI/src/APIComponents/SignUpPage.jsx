@@ -129,13 +129,10 @@ const SignUpPage = () => {
                                 autoComplete="current-password"
                             />
                             <Select
-                                name="role"
+                                name="Role"
                                 sx={{ marginTop: 1.8 }}
                                 fullWidth
-                                label="Role"
-                                type="role"
-                                id="role"
-                                autoComplete="current-role"
+                                required
                             >
                                 <MenuItem value="" disabled>
                                     <Typography sx={{ color: 'grey' }}>Select Role</Typography>
@@ -152,6 +149,13 @@ const SignUpPage = () => {
                             >
                                 Create Account
                             </Button>
+                            <Grid container>
+                                <Grid item xs>
+                                    <Link href="/login" variant="body2">
+                                        Sign in
+                                    </Link>
+                                </Grid>
+                            </Grid>
                             <Copyright sx={{ mt: 5 }} />
                         </Box>
                     </Box>
