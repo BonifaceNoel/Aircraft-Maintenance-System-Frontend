@@ -1,10 +1,12 @@
 import React from 'react';
 import { Container, Grid, Typography, Button, Card, CardContent, Paper } from '@mui/material';
 import IBSLogo from '../../public/IBSLogo.png'
+import NavBar from './NavBar';
 
 const Home = () => {
     return (
         <div style={{ display: 'flex', marginTop: '3rem', width: '100%' }}>
+            <NavBar />
             <Paper
                 component="footer"
                 elevation={0}

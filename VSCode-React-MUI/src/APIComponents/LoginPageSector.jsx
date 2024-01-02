@@ -37,8 +37,8 @@ const LoginPageSector = () => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         console.log({
-            username: data.get('user'),
-            password: data.get('password'),
+            login_name: data.get('user'),
+            login_password: data.get('password'),
         });
         try {
             const response = await fetch(`http://localhost:8095/amtslogin/login/${data.get('user')}/${data.get('password')}`);

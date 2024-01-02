@@ -14,6 +14,7 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
 
 const Copyright = (props) => {
     return (
@@ -31,14 +32,41 @@ const Copyright = (props) => {
 const defaultTheme = createTheme();
 
 const SignUpPage = () => {
-    const handleSubmit = (event) => {
+    const navigate = useNavigate();
+
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         console.log({
-            username: data.get('username'),
-            password: data.get('password'),
-            role: data.get('role')
+            login_name: data.get('username'),
+            login_password: data.get('password'),
+            login_role: data.get('role')
         });
+        try {
+            const response = await fetch('http://localhost:8095/amtslogin/newregist', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    login_name: data.get('username'),
+                    login_password: data.get('password'),
+                    login_role: data.get('role')
+                }),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                if (data.New_User === "Access_Request_Sent")
+                    navigate("/login");
+                else
+                    console.log("User not created");
+            } else {
+                console.error('Failed to fetch data');
+            }
+        } catch (error) {
+            console.error('Error fetching data', error);
+        }
     };
 
     return (

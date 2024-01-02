@@ -19,7 +19,6 @@ const App = () => {
   return (
     <div>
       <Router>
-        <NavBar />
         <Routes>
           <Route path="/login" element={<LoginPageSector />} />
           <Route path="/home" element={<Home />} />
