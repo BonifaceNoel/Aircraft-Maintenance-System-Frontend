@@ -11,6 +11,8 @@ import FlightsDamaged from './APIComponents/FlightsDamaged'
 import FlightStatus from './APIComponents/FlightStatus'
 import NewEntry from './APIComponents/NewEntry'
 import SearchByPK from './APIComponents/SearchByPK'
+import LoginPageSector from './APIComponents/LoginPageSector'
+import SignUpPage from './APIComponents/SignUpPage'
 
 const App = () => {
 
@@ -19,7 +21,9 @@ const App = () => {
       <Router>
         <NavBar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<LoginPageSector />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/signup" element={<SignUpPage />} />
           <Route path="/getflights" element={<GetFlightsList />} />
           <Route path="/getmaintenance" element={<GetMaintenanceDetails />} />
           <Route path="/flightsdamaged" element={<FlightsDamaged />} />

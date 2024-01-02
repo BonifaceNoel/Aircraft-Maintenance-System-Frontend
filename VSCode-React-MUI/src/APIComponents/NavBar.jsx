@@ -115,6 +115,10 @@ const NavBar = () => {
         }
     };
 
+    const handleLogout = () => {
+        navigate("/login");
+    }
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             <DarkNavbar position="fixed" sx={{ width: '100%' }}>
@@ -137,6 +141,16 @@ const NavBar = () => {
                     >
                         Aircraft Maintenance Tracking System
                     </LightText>
+                    <IconButton
+                        size="large"
+                        edge="start"
+                        color="inherit"
+                        aria-label="open drawer"
+                        sx={{ mr: 2, fontSize: '1rem' }}
+                        onClick={handleLogout}
+                    >
+                        Logout
+                    </IconButton>
                     <Search component="form" onSubmit={handleSearchSubmit}>
                         <SearchIconWrapper>
                             <SearchIcon />
